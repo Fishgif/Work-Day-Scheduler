@@ -17,7 +17,13 @@ function createRow (time){
 
     let inputCol = $("<div>").attr('class', 'col-8')
 
-    let input = $("<input>").attr('type', 'text');
+    let input = $("<input>").attr('type', 'text').attr('class', 'input-note');
+
+    // If event time has existing note add to input
+    let existingNote = getNote(time)
+    if(existingNote){
+        input.val(existingNote);
+    }
 
     inputCol.append(input)
 
@@ -37,20 +43,10 @@ function createRow (time){
 // from 9-5
 for (let time = 9; time < 18; time++) {
     
-    const row = createRow(time);
-    timeContainer.append(row);
+    let row = createRow(time);
+    $('#time-container').append(row)
 }
 
-// Load existing data from LS
-
-
-// Whats woudl happen when you set a task
-// nothing
-
-// if you click on save button
-// Save text to local storage 
-
-// if no input from user leave as is 
 
 // show day date and time.
 
@@ -59,3 +55,41 @@ for (let time = 9; time < 18; time++) {
 
 // future is red
 
+
+function getNote(time){
+
+    let timestamp = time + ' :00';
+
+   return localStorage.getItem(timestamp)
+
+} 
+
+
+function saveNote(note, time){
+
+localStorage.setItem(time, note)
+
+}
+
+// Load existing data from LS
+$('.input-note').on('change', document, function(event){
+    
+    let inputEL = $(event.target);
+
+    let timestamp = inputEL.parent().prev().text();
+
+    let userInput = inputEL.val();
+
+
+// Whats woudl happen when you set a task
+
+// nothing
+
+// if you click on save button
+saveNote(userInput, timestamp)
+// Save text to local storage 
+
+})
+ 
+
+// if no input from user leave as is 
