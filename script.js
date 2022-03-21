@@ -113,3 +113,22 @@ saveNote(userInput, timestamp)
 // if no input from user leave as is 
 
 
+
+
+function setBackgroundColor() {
+    var objDate = new Date();
+    var currentHour = objDate.getHours();
+    var hours = $('#timecolumn').val();
+    if (timestamp === currentHour) {
+        $(inputCol).addClass("present");
+    }
+    else if (hours < currentHour) {
+        $(inputCol).addClass("past");
+
+    }
+    else {
+        $(inputCol).addClass("future");
+
+        console.log(hours, currentHour)
+    }
+}
