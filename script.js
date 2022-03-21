@@ -1,6 +1,6 @@
 
 let timeContainer = document.getElementById('time-container')
-
+let clock = $('#clock');
 
 // When load page want to see time slots
 
@@ -31,7 +31,7 @@ function createRow (time){
 
     let buttonCol = $("<div>").attr('class', 'col-2')
 
-    let button = $("<button>").attr('class', 'btn btn-primary').text('Save')
+    let button = $("<button>").attr('class', 'btn btn-primary save-note-btn').text('Save')
 
     buttonCol.append(button)
 
@@ -49,6 +49,13 @@ for (let time = 9; time < 18; time++) {
 
 
 // show day date and time.
+setInterval(function(){
+
+let time = moment().format("MMMM dddd Do YYYY, HH:mm:ss");
+$("#clock").text(time);
+
+}, 1000)
+// update clock every second
 
 // if time is passed block as grey
 // current time is red
@@ -58,7 +65,7 @@ for (let time = 9; time < 18; time++) {
 
 function getNote(time){
 
-    let timestamp = time + ' :00';
+    let timestamp = time + ':00';
 
    return localStorage.getItem(timestamp)
 
@@ -91,5 +98,18 @@ saveNote(userInput, timestamp)
 
 })
  
+$('.sav-note-btn').on("click", document, function(event){
+let inputEL = $(event.target).parent().prev(). children()[0]
 
+let userInput = $(inputEL).val();
+
+let timeEl = $(event.target).parent().parent().prev()
+
+let timestamp = timeEl.text()
+
+saveNote(userInput, timestamp)
+
+});
 // if no input from user leave as is 
+
+
