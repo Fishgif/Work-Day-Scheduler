@@ -118,7 +118,7 @@ saveNote(userInput, timestamp)
 function setBackgroundColor() {
     var objDate = new Date();
     var currentHour = objDate.getHours();
-    var hours = $('#timecolumn').val();
+    
     if (timestamp === currentHour) {
         $(inputCol).addClass("present");
     }
@@ -129,6 +129,6 @@ function setBackgroundColor() {
     else {
         $(inputCol).addClass("future");
 
-        console.log(hours, currentHour)
+        console.log(timestamp, currentHour)
     }
 }
