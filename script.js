@@ -115,20 +115,20 @@ saveNote(userInput, timestamp)
 
 
 
-function setBackgroundColor() {
-    var objDate = new Date();
-    var currentHour = objDate.getHours();
-    
-    if (timestamp === currentHour) {
-        $(inputCol).addClass("present");
-    }
-    else if (hours < currentHour) {
-        $(inputCol).addClass("past");
+// setBackgroundColor();
 
-    }
-    else {
-        $(inputCol).addClass("future");
-
-        console.log(timestamp, currentHour)
-    }
-}
+// function setBackgroundColor(timestamp ) {
+//     var objDate = new Date();
+//     var currentHour = objDate.getHours();
+//     var hour = $('.col-2').text();
+//     if (timestamp  === currentHour) {
+//         $(`#${timestamp }row`).addClass("present")
+//     }
+//     else if (time < currentHour) {
+//         $(`#${timeHour}row`).addClass("past")
+//     }
+//     else {
+//         $(`#${timeHour}row`).addClass("future")
+//     }
+//     console.log('timeHour', timeHour, 'currentHour', currentHour)
+// }
